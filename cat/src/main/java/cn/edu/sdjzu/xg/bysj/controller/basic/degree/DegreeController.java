@@ -16,7 +16,7 @@ import java.util.Collection;
 
 @WebServlet("/degree.ctl")
 public class DegreeController extends HttpServlet {
-    //更新方法
+    //更新方法1
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String degree_json = JSONUtil.getJSON(request);
