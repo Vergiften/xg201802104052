@@ -7,7 +7,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import util.JSONUtil;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ import java.util.Collection;
 public class SchoolController extends HttpServlet {
     //更新方法
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String school_json = JSONUtil.getJSON(request);
         //将JSON字串解析为Degree对象
         School schoolToAdd = JSON.parseObject(school_json, School.class);
@@ -42,7 +41,7 @@ public class SchoolController extends HttpServlet {
 
     //增加方法
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         //根据request对象，获得代表参数的JSON字串
         String school_json = JSONUtil.getJSON(request);
         //将JSON字串解析为School对象
@@ -65,7 +64,7 @@ public class SchoolController extends HttpServlet {
 
     //删除方法
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws IOException{
         //读取参数id
         String id_str = request.getParameter("id");
         int id = Integer.parseInt(id_str);
@@ -87,7 +86,7 @@ public class SchoolController extends HttpServlet {
 
     //查找方法
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         //读取参数id
         String id_str = request.getParameter("id");
 
@@ -113,7 +112,7 @@ public class SchoolController extends HttpServlet {
     }
     //响应一个学院对象
     private void responseSchool(int id, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //根据id查找学院
         School school = SchoolService.getInstance().find(id);
         String school_json = JSON.toJSONString(school);
@@ -123,7 +122,7 @@ public class SchoolController extends HttpServlet {
     }
     //响应所有学院对象
     private void responseSchools(HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //获得所有学院
         Collection<School> schools = SchoolService.getInstance().findAll();
         String schools_json = JSON.toJSONString(schools, SerializerFeature.DisableCircularReferenceDetect);

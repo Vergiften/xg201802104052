@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import util.JSONUtil;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,7 @@ import java.util.Collection;
 public class ProfTitleController extends HttpServlet {
     //更新方法
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String profTitle_json = JSONUtil.getJSON(request);
         //将JSON字串解析为Degree对象
         ProfTitle profTitleToAdd = JSON.parseObject(profTitle_json,ProfTitle.class);
@@ -41,7 +40,7 @@ public class ProfTitleController extends HttpServlet {
 
     //增加方法
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         request.setCharacterEncoding("UTF-8");
         String profTitle_json = JSONUtil.getJSON(request);
         ProfTitle profTitleToAdd = JSON.parseObject(profTitle_json,ProfTitle.class);
@@ -63,7 +62,7 @@ public class ProfTitleController extends HttpServlet {
 
     //删除方法
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String id_str = request.getParameter("id");
         int id = Integer.parseInt(id_str);
 
@@ -84,7 +83,7 @@ public class ProfTitleController extends HttpServlet {
 
     //查找方法
     protected void doGet(HttpServletRequest request,HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         //读取参数id
         String id_str = request.getParameter("id");
 
@@ -111,7 +110,7 @@ public class ProfTitleController extends HttpServlet {
 
     //响应一个学位对象
     private void responseProfTitle(int id, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //根据id查找学院
         ProfTitle profTitle = ProfTitleService.getInstance().find(id);
         String profTitle_json = JSON.toJSONString(profTitle);
@@ -119,7 +118,7 @@ public class ProfTitleController extends HttpServlet {
     }
     //响应所有学位对象
     private void responseProfTitles(HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //获得所有学院
         Collection<ProfTitle> profTitles = ProfTitleService.getInstance().getAll();
         String profTitles_json = JSON.toJSONString(profTitles);

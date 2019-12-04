@@ -2,7 +2,6 @@ package cn.edu.sdjzu.xg.bysj.dao;
 
 import cn.edu.sdjzu.xg.bysj.domain.Teacher;
 import cn.edu.sdjzu.xg.bysj.domain.User;
-import cn.edu.sdjzu.xg.bysj.service.TeacherService;
 import cn.edu.sdjzu.xg.bysj.service.UserService;
 import util.JdbcHelper;
 

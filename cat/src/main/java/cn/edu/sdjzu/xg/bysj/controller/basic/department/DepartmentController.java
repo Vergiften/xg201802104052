@@ -1,17 +1,13 @@
 package cn.edu.sdjzu.xg.bysj.controller.basic.department;
 
 import cn.edu.sdjzu.xg.bysj.domain.Department;
-import cn.edu.sdjzu.xg.bysj.domain.School;
 import cn.edu.sdjzu.xg.bysj.domain.Teacher;
-import cn.edu.sdjzu.xg.bysj.service.DegreeService;
 import cn.edu.sdjzu.xg.bysj.service.DepartmentService;
-import cn.edu.sdjzu.xg.bysj.service.SchoolService;
 import cn.edu.sdjzu.xg.bysj.service.TeacherService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import util.JSONUtil;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +20,7 @@ import java.util.Collection;
 public class DepartmentController extends HttpServlet {
     //更新方法
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String department_json = JSONUtil.getJSON(request);
         //将JSON字串解析为Degree对象
         Department departmentToAdd = JSON.parseObject(department_json,Department.class);
@@ -46,7 +42,7 @@ public class DepartmentController extends HttpServlet {
 
     //增加方法
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String teacher_json = JSONUtil.getJSON(request);
         Teacher teacherToAdd = JSON.parseObject(teacher_json,Teacher.class);
 
@@ -67,7 +63,7 @@ public class DepartmentController extends HttpServlet {
 
     //删除方法
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String id_str = request.getParameter("id");
         int id = Integer.parseInt(id_str);
 
@@ -88,7 +84,7 @@ public class DepartmentController extends HttpServlet {
 
     //查找方法
     protected void doGet(HttpServletRequest request,HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         //读取参数id
         String id_str = request.getParameter("id");
         //读取参数paratype
@@ -125,7 +121,7 @@ public class DepartmentController extends HttpServlet {
 
     //通过school_id响应对应的department一个学位对象
     private void responseDepartmentsBySchool(int id, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //根据id查找学院
         Collection<Department> department = DepartmentService.getInstance().findAllBySchool(id);
         String department_json = JSON.toJSONString(department);
@@ -134,7 +130,7 @@ public class DepartmentController extends HttpServlet {
 
     //响应一个学位对象
     private void responseDepartment(int id, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //根据id查找学院
         Department department = DepartmentService.getInstance().find(id);
         String department_json = JSON.toJSONString(department);
@@ -143,7 +139,7 @@ public class DepartmentController extends HttpServlet {
 
     //响应所有学位对象
     private void responseDepartments(HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //获得所有学院
         Collection<Department> departments = DepartmentService.getInstance().getAll();
         String departments_json = JSON.toJSONString(departments);

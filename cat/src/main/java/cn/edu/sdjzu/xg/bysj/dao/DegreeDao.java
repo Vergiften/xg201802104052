@@ -1,14 +1,11 @@
 package cn.edu.sdjzu.xg.bysj.dao;
 
-
 import cn.edu.sdjzu.xg.bysj.domain.Degree;
-import cn.edu.sdjzu.xg.bysj.domain.Department;
 import util.JdbcHelper;
 
 import java.sql.*;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.TreeSet;
 
 public final class DegreeDao {
 	private static DegreeDao degreeDao=
@@ -26,7 +23,6 @@ public final class DegreeDao {
         ResultSet resultSet = stmt.executeQuery("select * from Degree");
         //从数据库中取出数据
         while (resultSet.next()){
-            //System.out.println(resultSet.getString("description"));
             degrees.add(new Degree(resultSet.getInt("id"), resultSet.getString("description"),
                     resultSet.getString("no"),resultSet.getString("remarks")));
         }

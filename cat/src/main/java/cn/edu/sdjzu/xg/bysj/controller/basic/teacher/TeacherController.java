@@ -26,7 +26,7 @@ public class TeacherController extends HttpServlet {
      */
     //更新方法
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String teacher_json = JSONUtil.getJSON(request);
         //将JSON字串解析为Degree对象
         Teacher teacherToAdd = JSON.parseObject(teacher_json,Teacher.class);
@@ -55,7 +55,7 @@ public class TeacherController extends HttpServlet {
      */
     //增加方法
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String teacher_json = JSONUtil.getJSON(request);
         Teacher teacherToAdd = JSON.parseObject(teacher_json,Teacher.class);
 
@@ -84,7 +84,7 @@ public class TeacherController extends HttpServlet {
      */
     //删除方法
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String id_str = request.getParameter("id");
         int id = Integer.parseInt(id_str);
 
@@ -112,7 +112,7 @@ public class TeacherController extends HttpServlet {
      */
     //查找方法
     protected void doGet(HttpServletRequest request,HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         //读取参数id
         String id_str = request.getParameter("id");
 
@@ -139,7 +139,7 @@ public class TeacherController extends HttpServlet {
 
     //响应一个学位对象
     private void responseTeacher(int id, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //根据id查找学院
         Teacher teacher = TeacherService.getInstance().find(id);
         String profTitle_json = JSON.toJSONString(teacher);
@@ -147,7 +147,7 @@ public class TeacherController extends HttpServlet {
     }
     //响应所有学位对象
     private void responseTeachers(HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //获得所有学院
         Collection<Teacher> teachers = TeacherService.getInstance().findAll();
         String teachers_json = JSON.toJSONString(teachers);

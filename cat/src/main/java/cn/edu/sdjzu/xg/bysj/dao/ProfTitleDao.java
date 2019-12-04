@@ -21,7 +21,6 @@ public final class ProfTitleDao {
 		ResultSet resultSet = stmt.executeQuery("select * from ProfTitle");
 		//从数据库中取出数据
 		while (resultSet.next()){
-			//System.out.println(resultSet.getString("description"));
 			profTitles.add(new ProfTitle(resultSet.getInt("id"), resultSet.getString("description"),
 					resultSet.getString("no"),resultSet.getString("remarks")));
 		}

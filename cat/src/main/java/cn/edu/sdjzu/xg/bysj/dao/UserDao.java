@@ -8,7 +8,6 @@ import java.sql.*;
 import java.util.Collection;
 import java.util.HashSet;
 
-
 public final class UserDao {
     private static Collection<User> users;
 	private static UserDao userDao=new UserDao();

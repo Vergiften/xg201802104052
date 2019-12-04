@@ -2,12 +2,10 @@ package cn.edu.sdjzu.xg.bysj.controller.basic.degree;
 
 import cn.edu.sdjzu.xg.bysj.domain.Degree;
 import cn.edu.sdjzu.xg.bysj.service.DegreeService;
-import cn.edu.sdjzu.xg.bysj.service.SchoolService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import util.JSONUtil;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +18,7 @@ import java.util.Collection;
 public class DegreeController extends HttpServlet {
     //更新方法
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String degree_json = JSONUtil.getJSON(request);
         //将JSON字串解析为Degree对象
         Degree degreeToAdd = JSON.parseObject(degree_json, Degree.class);
@@ -42,7 +40,7 @@ public class DegreeController extends HttpServlet {
 
     //增加方法
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String degree_json = JSONUtil.getJSON(request);
         Degree degreeToAdd = JSON.parseObject(degree_json,Degree.class);
 
@@ -63,7 +61,7 @@ public class DegreeController extends HttpServlet {
 
     //删除方法
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String id_str = request.getParameter("id");
         int id = Integer.parseInt(id_str);
 
@@ -84,7 +82,7 @@ public class DegreeController extends HttpServlet {
 
     //查找方法
     protected void doGet(HttpServletRequest request,HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         //读取参数id
         String id_str = request.getParameter("id");
 
@@ -111,7 +109,7 @@ public class DegreeController extends HttpServlet {
 
     //响应一个学位对象
     private void responseDegree(int id, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //根据id查找学院
         Degree degree = DegreeService.getInstance().find(id);
         String degree_json = JSON.toJSONString(degree);
@@ -119,7 +117,7 @@ public class DegreeController extends HttpServlet {
     }
     //响应所有学位对象
     private void responseDegrees(HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws IOException, SQLException {
         //获得所有学院
         Collection<Degree> degrees = DegreeService.getInstance().findAll();
         String degrees_json = JSON.toJSONString(degrees);
