@@ -10,6 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/JW_201802104052_32" />
+            <option value="$PROJECT_DIR$/JW_201802104052_32_1" />
             <option value="$PROJECT_DIR$/cat" />
           </set>
         </option>

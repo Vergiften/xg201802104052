@@ -1,3 +1,6 @@
 rootProject.name = 'xg201802104052'
 include 'cat'
+include 'JW_201802104052_32'
+include 'JW_201802104052_32_1'
+include 'JW_201802104052_32'
 
